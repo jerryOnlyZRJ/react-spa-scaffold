@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import App from './app'
+import CommentApp from './CommentApp'
 
 ReactDOM.render(
-  <App />,
+  <CommentApp />,
   document.getElementById('root')
 )
