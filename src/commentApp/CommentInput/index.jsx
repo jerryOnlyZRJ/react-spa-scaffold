@@ -1,8 +1,15 @@
 import React, { Component } from 'react'
 
 class CommentInput extends Component {
+  constructor() {
+    super()
+  }
   submitHandler(){
+    if (!this.input.value) return alert('请输入用户名')
+    if (!this.textarea.value) return alert('请输入评论内容')
     this.props.handleSubmit(this.input.value, this.textarea.value)
+    this.input.value = ''
+    this.textarea.value = ''
   }
   render () {
     return (

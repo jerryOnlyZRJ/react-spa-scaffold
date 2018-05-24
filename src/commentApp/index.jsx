@@ -4,14 +4,24 @@ import CommentList from './CommentList'
 import './index.css'
 
 class CommentApp extends Component {
-  afterCommentSubmit(name, content){
-  	console.log(`${name} - ${content}`)
+  constructor() {
+    super()
+    this.state = {
+      comments: []
+    }
+  }
+  afterCommentSubmit(username, content){
+    const comments = this.state.comments
+    comments.push({username, content})
+    this.setState({
+      comments:  comments
+    })
   }
   render() {
     return (
       <div className="wrapper">
         <CommentInput handleSubmit={this.afterCommentSubmit.bind(this)} />
-        <CommentList />
+        <CommentList comments={this.state.comments}  />
       </div>
     )
   }
