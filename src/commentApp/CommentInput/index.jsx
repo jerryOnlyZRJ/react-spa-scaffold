@@ -4,11 +4,29 @@ class CommentInput extends Component {
   constructor() {
     super()
   }
+  componentDidMount(){
+    this._loadUsername()
+  }
+  _saveUsername(name){
+    localStorage.setItem('username', name)
+  }
+  _loadUsername(){
+    const username = localStorage.getItem('username')
+    if(username){
+      this.input.value = username
+      this.textarea.focus()
+    }else {
+      this.input.focus()
+    }
+  }
   submitHandler(){
-    if (!this.input.value) return alert('请输入用户名')
-    if (!this.textarea.value) return alert('请输入评论内容')
-    this.props.handleSubmit(this.input.value, this.textarea.value)
-    this.input.value = ''
+    const username = this.input.value
+    const content = this.textarea.value
+    const createTime = new Date()
+    if (!username) return alert('请输入用户名')
+    if (!content) return alert('请输入评论内容')
+    this._saveUsername(username)
+    this.props.handleSubmit({username, content, createTime})
     this.textarea.value = ''
   }
   render () {
