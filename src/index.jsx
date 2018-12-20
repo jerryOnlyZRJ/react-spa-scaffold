@@ -1,9 +1,14 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import CommentApp from './CommentApp'
-import './index.css'
+import '@/assets/styles/index.css'
+
+class App extends Component {
+  render(){
+    return <h1>Hello React!</h1>
+  }
+}
 
 ReactDOM.render(
-  <CommentApp />,
+  <App />,
   document.getElementById('root')
 )

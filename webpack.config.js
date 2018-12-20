@@ -1,5 +1,4 @@
 const path = require('path')
-const webpack = require('webpack')
 // 注入HTML
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 // 提取CSS插件
@@ -10,15 +9,18 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
-module.exports = {
-  entry: './src/index.jsx',
+const localConfig = {
+  entry: path.join(__dirname, 'src/index.jsx'),
   output: {
     path: path.join(__dirname, './dist'),
     publicPath: '/',
     filename: 'scripts/[name]-[hash:5].js'
   },
   resolve: {
-    extensions: ['.jsx', '.js']
+    extensions: ['.jsx', '.js'],
+    alias: {
+      '@': path.resolve('src')
+    }
   },
   // webpack4压缩插件配置
   optimization: {
@@ -73,7 +75,7 @@ module.exports = {
     // 加入 html 模板任务
     new HtmlWebpackPlugin({
       // 模板文件
-      template: 'assets/index.html',
+      template: 'src/assets/index.html',
       // 打包后文件名称，会自动放到 output 指定的 dist 目录
       filename: 'index.html'
     }),
@@ -89,3 +91,5 @@ module.exports = {
     }),
   ]
 }
+
+module.exports = localConfig
