@@ -6,8 +6,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 // 清除冗余文件插件
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 // webpack4无法自动压缩.css文件，需要下面的插件支持
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
 const localConfig = {
   entry: path.join(__dirname, 'src/index.jsx'),
@@ -37,7 +37,7 @@ const localConfig = {
         vendor: { // 抽离第三方插件
           test: /node_modules/, // 指定是node_modules下的第三方包
           chunks: 'initial',
-          name: 'common/vendor', // 打包后的文件名，任意命名    
+          name: 'common/vendor', // 打包后的文件名，任意命名
           priority: 10 // 设置优先级，防止和自定义的公共代码提取时被覆盖，不进行打包
         },
         utils: { // 抽离自定义公共代码
@@ -70,6 +70,12 @@ const localConfig = {
         loader: 'babel-loader',
       }
     }, {
+      // eslint-loader
+      enforce: 'pre',
+      test: /\.(js|jsx)$/,
+      loader: 'eslint-loader',
+      exclude: /node_modules/
+    }, {
       test: /\.(png|jpg|gif)$/,
       use: [{
         loader: 'file-loader',
@@ -88,7 +94,7 @@ const localConfig = {
     // 提取CSS
     new MiniCssExtractPlugin({
       filename: 'styles/[name]-[hash:5].css',
-      chunkFilename: "styles/[id]-[hash:5].css"
+      chunkFilename: 'styles/[id]-[hash:5].css'
     }),
     new CleanWebpackPlugin('dist/*', {
       root: __dirname,
