@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import '@/assets/styles/index.css'
 
 class App extends Component {
-  render(){
+  render() {
     return <h1>Hello React!</h1>
   }
 }
