@@ -2,13 +2,19 @@ module.exports = {
     "extends": "standard",
     "parser": "babel-eslint",
     "parserOptions": {
-        "ecmaVersion": 6,
-        "sourceType": "module",
         "ecmaFeatures": {
-            "jsx": true
+            "jsx": true,
+            "modules": true
         }
     },
     "rules": {
-        "semi": 2
-    }
-};
+        "strict": 0,
+        "valid-jsdoc": 2,
+        "react/jsx-uses-react": 2,
+        "react/jsx-uses-vars": 2,
+        "react/react-in-jsx-scope": 2
+    },
+    "plugins": [
+        "react"
+    ]
+}

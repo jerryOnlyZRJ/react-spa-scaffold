@@ -7,7 +7,8 @@
     "test": "jest --coverage --detectOpenHandles --forceExit",
     "start:dev": "webpack-dev-server --mode development",
     "build:dev": "webpack --mode development",
-    "build:prod": "webpack --mode production"
+    "build:prod": "webpack --mode production",
+    "lint":"eslint src/**/*.jsx --fix"
   },
   "author": "Ranjay",
   "license": "ISC",
@@ -31,9 +32,11 @@
     "enzyme-adapter-react-16": "^1.7.1",
     "eslint": "^5.10.0",
     "eslint-config-standard": "^12.0.0",
+    "eslint-loader": "^2.1.1",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-node": "^8.0.0",
     "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-react": "^7.11.1",
     "eslint-plugin-standard": "^4.0.0",
     "file-loader": "^2.0.0",
     "html-webpack-plugin": "^3.2.0",
