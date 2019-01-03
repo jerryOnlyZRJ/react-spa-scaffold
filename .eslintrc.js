@@ -12,7 +12,8 @@ module.exports = {
         "valid-jsdoc": 2,
         "react/jsx-uses-react": 2,
         "react/jsx-uses-vars": 2,
-        "react/react-in-jsx-scope": 2
+        "react/react-in-jsx-scope": 2,
+        "indent": ["error", 4]
     },
     "plugins": [
         "react"
